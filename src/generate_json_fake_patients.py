@@ -99,7 +99,7 @@ def faker_categorical(number_of_fakes_to_make=20, seed=None):
     return output
 
 results = faker_categorical(number_of_fakes_to_make, None)
-json_results = json.dumps(results)
+json_results = json.dumps(results, indent=4)
 print(json_results)
 
 with open(output_file, 'w') as file:
