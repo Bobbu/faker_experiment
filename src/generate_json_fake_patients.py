@@ -94,7 +94,6 @@ def faker_categorical(number_of_fakes_to_make=20, seed=None):
                 "email": realistic_fake_email(first_name, last_name),
                 "patient_status": fake.sentence(nb_words=10),
                 "primary_phone_number": fake.phone_number(),
-                "zipcode": fake.zipcode(),
             })
     return output
 
