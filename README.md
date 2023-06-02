@@ -19,5 +19,5 @@ https://youtu.be/r6-1GqaCpto
 The second takes you through generating varied and realistic appointment schedule just using some common sense techniques.
 
 *2023-06-02 Demo and walkthrough of generating appointments*
-https://youtu.be/5b4iYY0LAFM
+https://youtu.be/6cdhGdlG3Dk
 
