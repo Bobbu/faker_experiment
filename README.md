@@ -11,6 +11,13 @@ $ python src/generate_json_fake_patients.py 300 patients.json
 
 If you would like to see a walkthrough of at least one version of the code contained in this repo, you can see a YouTube video walkthrough here: 
 
+The first takes you through using Fasker to generate realistic patient demographic data.
+
 *2023-05-31 Demo of Faker Experiment*
-https://www.youtube.com/watch?v=r6-1GqaCpto
+https://youtu.be/r6-1GqaCpto
+
+The second takes you through generating varied and realistic appointment schedule just using some common sense techniques.
+
+*2023-06-02 Demo and walkthrough of generating appointments*
+https://youtu.be/5b4iYY0LAFM
 
