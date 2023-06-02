@@ -22,7 +22,7 @@
 import json
 import boto3
 import random
-from datetime import datetime, date, timedelta, timezone
+from datetime import datetime, date, timedelta #, timezone
 from botocore.exceptions import ClientError
 
 s3_client = boto3.client('s3')
@@ -53,7 +53,6 @@ def determine_desired_date(event):
             desired_date = datetime.strptime(desired_date_param, '%Y-%m-%d')
             
     # desired_date = desired_date.replace(tzinfo=timezone.utc)
-    print(desired_date)
     return desired_date
 
 def determine_number_of_appointments(desired_date):
@@ -87,15 +86,12 @@ def determine_timedelta_between_appointments(total_number_of_appointments):
 def appointments_object_key(desired_date):
     date_prefix = desired_date.strftime('%Y-%m-%d')
     result = date_prefix + "-appointments.json"
-    print(result)
     return result
     
 def load_preexisting_appointments(appointments_object_key):
     response = s3_client.get_object(Bucket=test_data_bucket_name, Key=appointments_object_key)
     #json_content = response['Body'].read().decode('utf-8')
     json_content = response['Body'].read()
-    print('The json content is:\n\n')
-    print(json_content)
     return json_content
 
 def load_patients():
@@ -105,14 +101,12 @@ def load_patients():
     return json_content
     
 def generatedAppointments(desired_date, number_of_appointments):
-    # load the patients into memory
     patients = load_patients()
     print(len(patients))
     print(desired_date)
     first_appointment_time = timedelta(hours=8, minutes=30)
     appointment_time = desired_date + first_appointment_time
     timedelta_between_appointments = determine_timedelta_between_appointments(number_of_appointments)
-    print(appointment_time)
     appointments = []
     for i in range(number_of_appointments):
         random_patient = patients[random.randint(0, len(patients) - 1)]
@@ -133,27 +127,23 @@ def generatedAppointments(desired_date, number_of_appointments):
             }
             
         }
-        # our isoformat datetime strings look like this: '2023-06-01T15:30:00'
-        # carecloud time strings look like this:         "2023-06-01T08:30:00-04:00"
-        print(new_appointment)
+        # Note our isoformat datetime strings look like this: "2023-06-01T15:30:00"
+        # carecloud time strings look like this (UTC offset): "2023-06-01T08:30:00-04:00"
         appointments.append(new_appointment)
     return appointments
     
 
 def lambda_handler(event, context):
-    
-    # print("Got event\n" + json.dumps(event, indent=2))
-    
+        
     # 1. determine what day is desired. If no desired_date was passed to us, assume today
     desired_date = determine_desired_date(event)
     
     appointments_obj_key = appointments_object_key(desired_date)
     
-    appointments_as_json = '[]' #just for starters
+    appointments_as_json = '[]' # TODO Learn about python variable scope rules
     
     # 2a. If an appointments file already exists in our test bucket, just return it. 
     #    Otherwise, we will geenrate a new set of appointments for the desired date.
-    #if 1 == 2:
     if does_s3_key_exist(test_data_bucket_name, appointments_obj_key):
         appointments_as_json = load_preexisting_appointments(appointments_obj_key)
         
