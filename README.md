@@ -11,7 +11,7 @@ $ python src/generate_json_fake_patients.py 300 patients.json
 
 If you would like to see a walkthrough of at least one version of the code contained in this repo, you can see a YouTube video walkthrough here: 
 
-The first takes you through using Fasker to generate realistic patient demographic data.
+The first takes you through using Faker to generate realistic patient demographic data.
 
 *2023-05-31 Demo of Faker Experiment*
 https://youtu.be/r6-1GqaCpto
