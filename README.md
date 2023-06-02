@@ -14,7 +14,7 @@ If you would like to see a walkthrough of at least one version of the code conta
 The first takes you through using Fasker to generate realistic patient demographic data.
 
 *2023-05-31 Demo of Faker Experiment*
-https://www.youtube.com/watch?v=r6-1GqaCpto
+https://youtu.be/r6-1GqaCpto
 
 The second takes you through generating varied and realistic appointment schedule just using some common sense techniques.
 
