@@ -16,7 +16,7 @@ The first takes you through using Fasker to generate realistic patient demograph
 *2023-05-31 Demo of Faker Experiment*
 https://youtu.be/r6-1GqaCpto
 
-The second takes you through generating varied and realistic appointment schedule just using some common sense techniques.
+The second takes you through generating varied and realistic appointment schedules just using some common sense techniques.
 
 *2023-06-02 Demo and walkthrough of generating appointments*
 https://youtu.be/6cdhGdlG3Dk
