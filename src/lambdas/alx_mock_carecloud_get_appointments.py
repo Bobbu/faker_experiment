@@ -29,6 +29,26 @@ s3_client = boto3.client('s3')
 test_data_bucket_name = 'alx-test-data-bucket'
 test_patients_object_key = 'patients2000.json'
 
+# doing this ultra fake just to avod needing to layer in the real Faker
+fake_complaints = [
+    "No complaints, really.",
+    "It only hurts if I move or stand still.",
+    "Unable to perform basic functions (e.g., writing or opening jars)",
+    "Suspects arthritis in thumb.",
+    "Fears fractured elbow.",
+    "Candidate elbow replacement",
+    "Not getting any more mobile",
+    "Cannot throw overhand",
+    "Cannot throw to save my life (never could)",
+    "Got a ski pole stuck in my right bicep",
+    "Suspect tennis elbow",
+    "",
+    "",
+    "",
+    "",
+    ""
+]
+
 def does_s3_key_exist(bucket, key):
 
     try:
@@ -119,7 +139,7 @@ def generatedAppointments(desired_date, number_of_appointments):
             {
                 "id" : str(i),
                 "patient" : random_patient,
-                "chief complaint" : "No complaints, really.",
+                "chief_complaint" : fake_complaints[random.randint(0,len(fake_complaints) - 1)],
                 "start_time" : appointment_time_safe_string,
                 "end_time": end_time_safe_string,
                 "created_at": random_time.isoformat(),
